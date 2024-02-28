@@ -11,7 +11,6 @@ const Body = () => {
 
     const dispatch = useDispatch();
     
-
     const appRouter = createBrowserRouter([
         {
             path: "/",
@@ -27,8 +26,8 @@ const Body = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
               
-              const {uid, email, displayName} = user;
-              dispatch(addUser({uid, email, displayName}));
+              const {uid, email, displayName, photoURL} = user;
+              dispatch(addUser({uid, email, displayName, photoURL}));
               
             } else {
               dispatch(removeUser());
