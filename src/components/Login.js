@@ -6,15 +6,14 @@ import {
     signInWithEmailAndPassword,
     updateProfile } from "firebase/auth";
 import {auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BACKGROUND_IMAGE, USER_AVATAR } from "../utils/constant";
 
 const Login = () => {
 
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const fullName = useRef(null);
@@ -48,11 +47,10 @@ const Login = () => {
                     console.log("from firebase api after successful sign up", user);
                     updateProfile(user, {
                         displayName: fullName.current.value, 
-                        photoURL: "https://i.pinimg.com/736x/9c/82/a5/9c82a5a3a7ba4c65ae950188ce22f65f.jpg"
+                        photoURL: USER_AVATAR
                       }).then(() => {
                         const {uid, email, displayName, photoURL} = auth.currentUser;
                         dispatch(addUser({uid, email, displayName, photoURL}));
-                        navigate("/browse");
                       }).catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
@@ -76,7 +74,6 @@ const Login = () => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log("from firebase api after successful sign in",user);
-                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -91,7 +88,7 @@ const Login = () => {
             <Header />
             <div className="absolute">           
                 <img 
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                    src={BACKGROUND_IMAGE}
                     alt='background-img'
                 >
                 </img>
