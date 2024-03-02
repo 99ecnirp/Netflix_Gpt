@@ -11,8 +11,7 @@ const useNowPlayingMovies = () => {
         fetch(url, API_OPTIONS)
         .then(res => res.json())
         .then(json => {
-            dispatch(addNowPlayingMovies(json));
-            console.log("------------------------",json)
+            dispatch(addNowPlayingMovies(json.results));
         })
         .catch(err => console.error('error:' + err));
     }

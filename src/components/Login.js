@@ -44,7 +44,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    console.log("from firebase api after successful sign up", user);
                     updateProfile(user, {
                         displayName: fullName.current.value, 
                         photoURL: USER_AVATAR
@@ -73,7 +72,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log("from firebase api after successful sign in",user);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
