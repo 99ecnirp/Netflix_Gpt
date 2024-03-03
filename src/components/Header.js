@@ -8,10 +8,12 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { useEffect } from 'react';
 import { LOGO } from '../utils/constant';
+import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector(store => store.user);
+  const showGptSearch = useSelector(store => store.gpt.showGptSearch);
   const dispatch = useDispatch();
 
   const handleSignout = () => {
@@ -40,7 +42,11 @@ const Header = () => {
   }, []);
 
   const handleGptSearchClick = () => {
-    dispatch(toggleGptSearchView())
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
   };
 
   return (
@@ -53,11 +59,20 @@ const Header = () => {
       </img>
       {user && (
         <div className='flex p-2'>
+          {showGptSearch && (
+            <select 
+              className='p-2 bg-gray-900 text-white m-2'
+              onChange={handleLanguageChange}
+            >
+              <option value='en'>English</option>
+              <option value='hindi'>Hindi</option>
+            </select>
+          )}
           <button 
             className='mx-4 my-2 py-2 px-4 bg-purple-800 text-white rounded-lg'
-            onclcik={handleGptSearchClick}
+            onClick={handleGptSearchClick}
           >
-            GPT Search
+            {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
           <img
             className='w-10 h-10 '
@@ -73,8 +88,6 @@ const Header = () => {
           </button>
         </div>
       )}
-      
-      
     </div>
   )
 }
