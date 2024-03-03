@@ -4,7 +4,8 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from "firebase/auth";
-import {addUser, removeUser} from "../utils/userSlice";
+import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearchView } from "../utils/gptSlice";
 import { useEffect } from 'react';
 import { LOGO } from '../utils/constant';
 
@@ -38,6 +39,10 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView())
+  };
+
   return (
     <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between'>
       <img 
@@ -47,7 +52,13 @@ const Header = () => {
         >
       </img>
       {user && (
-        <div className='p-2'>
+        <div className='flex p-2'>
+          <button 
+            className='mx-4 my-2 py-2 px-4 bg-purple-800 text-white rounded-lg'
+            onclcik={handleGptSearchClick}
+          >
+            GPT Search
+          </button>
           <img
             className='w-10 h-10 '
             alt='usericon'
