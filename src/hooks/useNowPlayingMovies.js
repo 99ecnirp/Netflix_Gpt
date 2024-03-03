@@ -5,7 +5,6 @@ import { addNowPlayingMovies } from '../utils/moviesSlice';
 
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
-
     const getNowPlayingMovies = async () => {
         const url = 'https://api.themoviedb.org/3/movie/now_playing?page=1';
         fetch(url, API_OPTIONS)
