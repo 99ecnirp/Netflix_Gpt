@@ -1,10 +1,10 @@
-export const LOGO = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
+ const LOGO = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
 
-export const USER_AVATAR = "https://i.pinimg.com/736x/9c/82/a5/9c82a5a3a7ba4c65ae950188ce22f65f.jpg";
+ const USER_AVATAR = "https://i.pinimg.com/736x/9c/82/a5/9c82a5a3a7ba4c65ae950188ce22f65f.jpg";
 
-export const BACKGROUND_IMAGE = "https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg";
+ const BACKGROUND_IMAGE = "https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg";
 
-export const API_OPTIONS = {
+ const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
@@ -12,4 +12,15 @@ export const API_OPTIONS = {
     }
 };
 
-export const IMG_CDN_URL = 'https://image.tmdb.org/t/p/w780';
+ const IMG_CDN_URL = 'https://image.tmdb.org/t/p/w780';
+
+ const OPENAI_KEY = "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";
+
+export { 
+  LOGO,
+  USER_AVATAR,
+  BACKGROUND_IMAGE,
+  API_OPTIONS,
+  IMG_CDN_URL,
+  OPENAI_KEY
+}
